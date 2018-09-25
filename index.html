@@ -138,16 +138,54 @@ TIPR tooltips - http://www.tipue.com/tipr/
                 </div>
             </div>
         </section>
+
         <section class="bg--secondary space--sm">
             <div class="container">
                 <div class="boxed boxed--border" >
-                    <div class="col-md-12">
-                        <table class=" table--alternate-row">
-                            <!--<thead> <tr> <th> </th> <th> </th> </tr> </thead>-->
-                            <tbody id="statistics" class="border--round table--alternate-row">
-                                <tr><td colspan="2">Loading info from the blockchain...</td></tr>
-                            </tbody>
-                        </table>
+                    <h4>Caelum Token contract statistics</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table--alternate-row ">
+                                <!--<thead id="minerstats"> <tr> <th> </th> <th> </th> </tr> </thead>-->
+                                <tbody id="statistics">
+                                    <tr><td colspan="3">Loading info from the blockchain...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg--secondary space--sm">
+            <div class="container"  style="display:none;" id="row-miners">
+                <div class="boxed boxed--border" >
+                    <h4>Block distribution since last retarget</h4>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div id="blockdistributionpiechart" name="blockdistributionpiechart">
+                                <canvas id="chart-block-distribution" width="2rem" height="2rem" class="float-right"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <table class="table--alternate-row ">
+                                <!--<thead id="minerstats"> <tr> <th> </th> <th> </th> </tr> </thead>-->
+                                <tbody id="minerstats">
+                                    <tr><td colspan="3">Loading info from the blockchain...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" style="display:none; margin-top: 40px" id="row-blocks">
+                        <div class="col-md-12">
+                            <table class="table--alternate-row ">
+                                <!--<thead id="minerstats"> <tr> <th> </th> <th> </th> </tr> </thead>-->
+                                <tbody id="blockstats">
+                                    <tr><td colspan="3">Loading info from the blockchain...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -156,72 +194,7 @@ TIPR tooltips - http://www.tipue.com/tipr/
 
 
 
-    <div class="container">
-        <div class="row">
-            <div class="column">
-                <img class="top-logo" alt="0xBitcoin Logo" src="img/0xBTC_Orange-40px.png" height=40 width=40 />
-                <h1>0xBitcoin Token Statistics</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <ul id="navigation" class="nav">
-                    <li class="nav"><a href="./?page=stats&#"><i class="icon ion-ios-pulse navicon"></i> stats</a></li>
-                    <li class="nav"><a href="./?page=stats&#miners"><i class="icon ion-ios-people-outline navicon"></i> miners</a></li>
-                    <li class="nav"><a href="./?page=stats&#blocks"><i class="icon ion-ios-browsers-outline navicon"></i> blocks</a></li>
-
-                    <li class="nav"><a href="./?page=miningcalculator&#"><i class="icon ion-ios-calculator-outline navicon"></i> mining calculator<!-- <span style="color:#FF1744;">(new)</span>--></a></li>
-
-                    <li class="nav"><a href="./?page=graphs&#"><i class="icon ion-ios-flame-outline navicon"></i> difficulty / hashrate</a></li>
-                    <li class="nav"><a href="./?page=graphs&#reward-time"><i class="icon ion-ios-speedometer-outline navicon"></i> reward time / supply</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div style="display:none;" id="row-statistics" class="container">
-            <div class="row">
-
-            </div>
-        </div>
-
-
-        <div style="display:none;" id="row-miners">
-            <div class="row">
-                <div class="column"><h4 class="add-top-padding"><a name="miners"></a>Block distribution since last retarget</h4></div>
-            </div>
-            <div class="row">
-                <div class="column col-md-2" style="max-width:30rem;">
-                    <div id="blockdistributionpiechart" name="blockdistributionpiechart">
-                        <canvas id="chart-block-distribution" width="2rem" height="2rem"></canvas>
-                    </div>
-                </div>
-                <div class="column">
-                    <table>
-                        <!--<thead id="minerstats"> <tr> <th> </th> <th> </th> </tr> </thead>-->
-                        <tbody id="minerstats">
-                            <tr><td colspan="3">Loading info from the blockchain...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div style="display:none;" id="row-blocks">
-            <div class="row">
-                <div class="column"><h4 class="add-top-padding"><a name="blocks"></a>Blocks solved since last retarget</h4></div>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <table>
-                        <!--<thead id="minerstats"> <tr> <th> </th> <th> </th> </tr> </thead>-->
-                        <tbody id="blockstats">
-                            <tr><td colspan="3">Loading info from the blockchain...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div style="display:none;" id="row-miningcalculator">
+<div style="display:none;" id="row-miningcalculator">
             <div class="row">
                 <div class="column"><h4 class="add-top-padding"><a name="miningcalculator"></a>Mining calculator</h4></div>
             </div>
@@ -335,8 +308,6 @@ TIPR tooltips - http://www.tipue.com/tipr/
                 </ul>
             </div>
         </div>
-    </div>
-</div>
 
 
 <div style="display:none;" id="row-difficulty">
