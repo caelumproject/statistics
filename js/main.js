@@ -60,8 +60,8 @@ var known_miners = {
     /**
     * @title:
     */
-    "0x37F8b11A709ED0526A42a374BF491397B28F6573" : [ "Caelum Mining pool", "http://pool.caelumproject.io",     pool_colors.orange ], // mint helper contract (old)
-    "0xeabe48908503b7efb090f35595fb8d1a4d55bd66" : [ "Token Mining Pool", "http://TokenMiningPool.com",     pool_colors.orange ], // mint helper contract
+    "0xbbaf778404f29dafabfb07981e3cf3fae29ce385" : [ "Caelum Mining pool", "http://pool.caelumproject.io",     pool_colors.orange ], // mint helper contract (old)
+    "0xbBAf778404f29dAfaBFB07981E3Cf3faE29cE385" : [ "Caelum Mining Pool", "http://pool.caelumproject.io",     pool_colors.orange ], // mint helper contract
     "0x53ce57325c126145de454719b4931600a0bd6fc4" : [ "0xPool",            "http://0xPool.io",               pool_colors.purple ],
     "0x98b155d9a42791ce475acc336ae348a72b2e8714" : [ "0xBTCpool",         "http://0xBTCpool.com",           pool_colors.blue ],
     "0x363b5534fb8b5f615583c7329c9ca8ce6edaf6e6" : [ "mike.rs pool",      "http://mike.rs",                 pool_colors.green ],
@@ -257,15 +257,15 @@ function calculateNewMiningDifficulty(current_difficulty,
         ['Rewards Until Readjustment',    null,                                 "",           1,          null     ], /* mining difficulty */
         ['Current Average Reward Time',   null,                                 "minutes",    1,          null     ], /* mining difficulty */
         ['Last Difficulty Start Block',   token.latestDifficultyPeriodStarted,  "",           1,          null     ], /* mining difficulty */
-        ['Tokens Minted',                 token.tokensMinted,                   "0xBTC",      0.00000001, null     ], /* supply */
-        ['Max Supply for Current Era',    token.maxSupplyForEra,                "0xBTC",      0.00000001, null     ], /* mining */
-        ['Supply Remaining in Era',       null,                                 "0xBTC",      0.00000001, null     ], /* mining */
+        ['Tokens Minted',                 token.tokensMinted,                   "CLM",      0.00000001, null     ], /* supply */
+        ['Max Supply for Current Era',    token.maxSupplyForEra,                "CLM",      0.00000001, null     ], /* mining */
+        ['Supply Remaining in Era',       null,                                 "CLM",      0.00000001, null     ], /* mining */
         //['Last Eth Reward Block',         token.lastRewardEthBlockNumber,       "",           1,          null     ], /* mining */
         ['Last Eth Block',                eth.blockNumber,                      "",           1,          null     ], /* mining */
         ['Current Reward Era',            token.rewardEra,                      "/ 39",       1,          null     ], /* mining */
-        ['Current Mining Reward',         token.getMiningReward,                "0xBTC",      0.00000001, null     ], /* mining */
+        ['Current Mining Reward',         token.getMiningReward,                "CLM",      0.00000001, null     ], /* mining */
         ['Epoch Count',                   token.epochCount,                     "",           1,          null     ], /* mining */
-        ['Total Supply',                  token.totalSupply,                    "0xBTC",      0.00000001, null     ], /* supply */
+        ['Total Supply',                  token.totalSupply,                    "CLM",      0.00000001, null     ], /* supply */
         ['',                              null,                                 "",           1,          null     ], /* */
         ['Token Holders',                 null,                                 "holders",    1,          null     ], /* usage */
         ['Token Transfers',               null,                                 "transfers",  1,          null     ], /* usage */
