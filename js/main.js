@@ -35,7 +35,7 @@ const _IDEAL_BLOCK_TIME_SECONDS = _ETH_BLOCKS_PER_REWARD * _SECONDS_PER_ETH_BLOC
 var pool_colors = {
     orange      : "#C64500",
     purple      : "#4527A0", // note: purple looks a lot like blue
-    blue        : "#0277BD",
+    blue        : "#5C9BD1",
     green       : "#2E7D32",
     yellow      : "#997500",
     darkpurple  : "#662354",
@@ -60,8 +60,8 @@ var known_miners = {
     /**
     * @title:
     */
-    "0xbbaf778404f29dafabfb07981e3cf3fae29ce385" : [ "Caelum Mining pool", "http://pool.caelumproject.io",     pool_colors.orange ], // mint helper contract (old)
-    "0xbBAf778404f29dAfaBFB07981E3Cf3faE29cE385" : [ "Caelum Mining Pool", "http://pool.caelumproject.io",     pool_colors.orange ], // mint helper contract
+    "0xbbaf778404f29dafabfb07981e3cf3fae29ce385" : [ "Caelum Mining pool", "http://pool.caelumproject.io",     pool_colors.blue ], // mint helper contract (old)
+    "0xbBAf778404f29dAfaBFB07981E3Cf3faE29cE385" : [ "Caelum Mining Pool", "http://pool.caelumproject.io",     pool_colors.blue ], // mint helper contract
     "0x53ce57325c126145de454719b4931600a0bd6fc4" : [ "0xPool",            "http://0xPool.io",               pool_colors.purple ],
     "0x98b155d9a42791ce475acc336ae348a72b2e8714" : [ "0xBTCpool",         "http://0xBTCpool.com",           pool_colors.blue ],
     "0x363b5534fb8b5f615583c7329c9ca8ce6edaf6e6" : [ "mike.rs pool",      "http://mike.rs",                 pool_colors.green ],
