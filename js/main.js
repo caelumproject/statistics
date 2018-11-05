@@ -76,7 +76,7 @@ var known_miners = {
     "0x20744acca6966c0f45a80aa7baf778f4517351a4" : [ "PoolOfD32th",       "http://CLM.poolofd32th.club",  pool_colors.darkred ],
     "0xd4ddfd51956c19f624e948abc8619e56e5dc3958" : [ "0xMiningPool",      "http://0xminingpool.com/",       pool_colors.teal ],
     "0x88c2952c9e9c56e8402d1b6ce6ab986747336b30" : [ "CLM.wolfpool.io", "http://wolfpool.io/",            pool_colors.red ],
-    "0x6696722c5cad75664a7dfe99fa2f9b0693c6de39" : [ "@MrStruggle solo",          "",               pool_colors.slate ],
+    "0x6696722c5cad75664a7dfe99fa2f9b0693c6de39" : [ "@MrStruggle solo",          "",               pool_colors.pink ],
     "0xbbdf0402e51d12950bd8bbd50a25ed1aba5615ef" : [ "ExtremeHash",       "http://CLM.extremehash.io/",   pool_colors.brightred ],
     "0x7d28994733e6dbb93fc285c01d1639e3203b54e4" : [ "Wutime.com",        "http://wutime.com/",             pool_colors.royal ],
     "0x02e03db268488716c161721663501014fa031250" : [ "xb.veo.network",    "https://xb.veo.network:2096/",   pool_colors.pink ],
