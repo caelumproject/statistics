@@ -1,1 +1,5 @@
 /*! Place your custom styles here */
+
+.span.poolname {
+  color: #ffffff !important;
+}
