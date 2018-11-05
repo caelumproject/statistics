@@ -61,10 +61,7 @@ var pool_colors = {
 
 
 var known_miners = {
-    "0xf6ca6eb7d4a406f9076c9122d78d194c0e0c1d6b" : [ "@MrStruggle solo", "",     pool_colors.orange ],
-    /**
-    * @title:
-    */
+    "0xf6ca6eb7d4a406f9076c9122d78d194c0e0c1d6b" : [ "@MrStruggle solo", "t.me/@MrStruggleBus",     pool_colors.orange ],
     "0xbbaf778404f29dafabfb07981e3cf3fae29ce385" : [ "Caelum Mining pool", "http://pool.caelumproject.io",     pool_colors.blue ], // mint helper contract (old)
     "0xbBAf778404f29dAfaBFB07981E3Cf3faE29cE385" : [ "Caelum Mining Pool", "http://pool.caelumproject.io",     pool_colors.blue ], // mint helper contract
     "0x53ce57325c126145de454719b4931600a0bd6fc4" : [ "0xPool",            "http://0xPool.io",               pool_colors.purple ],
@@ -76,7 +73,7 @@ var known_miners = {
     "0x20744acca6966c0f45a80aa7baf778f4517351a4" : [ "PoolOfD32th",       "http://CLM.poolofd32th.club",  pool_colors.darkred ],
     "0xd4ddfd51956c19f624e948abc8619e56e5dc3958" : [ "0xMiningPool",      "http://0xminingpool.com/",       pool_colors.teal ],
     "0x88c2952c9e9c56e8402d1b6ce6ab986747336b30" : [ "CLM.wolfpool.io", "http://wolfpool.io/",            pool_colors.red ],
-    "0x6696722c5cad75664a7dfe99fa2f9b0693c6de39" : [ "@MrStruggle solo",          "",               pool_colors.pink ],
+    "0x6696722c5cad75664a7dfe99fa2f9b0693c6de39" : [ "@MrStruggle solo 2", "t.me/@MrStruggleBus",               pool_colors.pink ],
     "0xbbdf0402e51d12950bd8bbd50a25ed1aba5615ef" : [ "ExtremeHash",       "http://CLM.extremehash.io/",   pool_colors.brightred ],
     "0x7d28994733e6dbb93fc285c01d1639e3203b54e4" : [ "Wutime.com",        "http://wutime.com/",             pool_colors.royal ],
     "0x02e03db268488716c161721663501014fa031250" : [ "xb.veo.network",    "https://xb.veo.network:2096/",   pool_colors.pink ],
