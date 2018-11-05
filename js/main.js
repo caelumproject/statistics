@@ -19,6 +19,7 @@ const _ZERO_BN = new Eth.BN(0, 10);
 
 
 const _BLOCKS_PER_READJUSTMENT = 512;
+
 const _CONTRACT_ADDRESS = "0x7600bF5112945F9F006c216d5d6db0df2806eDc6";
 const _MINT_TOPIC = "0xcf6fbb9dcea7d07263ab4f5c3a92f53af33dffc421d9d121e1c74b307e68189d";
 const _MAXIMUM_TARGET_STR = "27606985387162255149739023449108101809804435888681546220650096895197184";  // 2**234
@@ -28,6 +29,10 @@ const _ETH_BLOCKS_PER_REWARD = 60;
 const _MAXIMUM_TARGET_BN = new Eth.BN(_MAXIMUM_TARGET_STR, 10);
 const _MINIMUM_TARGET_BN = new Eth.BN(_MINIMUM_TARGET);
 const _IDEAL_BLOCK_TIME_SECONDS = _ETH_BLOCKS_PER_REWARD * _SECONDS_PER_ETH_BLOCK;
+
+const _TOKEN_CONTRACT = "0xc71a7ecd96fef6e34a5c296bee9533f1deb0e3c1";
+const _MASTER_CONTRACT = "0x3b1b3f92d85ef134fb253c1e976346430eab6b37";
+const _MINER_CONTRACT = "0xa38fcedd23de2191dc27f9a0240ac170be0a14fe";
 
 
 
@@ -63,20 +68,20 @@ var known_miners = {
     "0xbbaf778404f29dafabfb07981e3cf3fae29ce385" : [ "Caelum Mining pool", "http://pool.caelumproject.io",     pool_colors.blue ], // mint helper contract (old)
     "0xbBAf778404f29dAfaBFB07981E3Cf3faE29cE385" : [ "Caelum Mining Pool", "http://pool.caelumproject.io",     pool_colors.blue ], // mint helper contract
     "0x53ce57325c126145de454719b4931600a0bd6fc4" : [ "0xPool",            "http://0xPool.io",               pool_colors.purple ],
-    "0x98b155d9a42791ce475acc336ae348a72b2e8714" : [ "0xBTCpool",         "http://0xBTCpool.com",           pool_colors.blue ],
+    "0x98b155d9a42791ce475acc336ae348a72b2e8714" : [ "CLMpool",         "http://CLMpool.com",           pool_colors.blue ],
     "0x363b5534fb8b5f615583c7329c9ca8ce6edaf6e6" : [ "mike.rs pool",      "http://mike.rs",                 pool_colors.green ],
     "0x50212e78d96a183f415e1235e56e64416d972e93" : [ "mike.rs pool",      "http://mike.rs",                 pool_colors.green ], // mint helper contract
     "0x02c8832baf93380562b0c8ce18e2f709d6514c60" : [ "mike.rs pool B",    "http://b.mike.rs",               pool_colors.green ],
-    "0x8dcee1c6302232c4cc5ce7b5ee8be16c1f9fd961" : [ "Mine0xBTC",         "http://mine0xbtc.eu",            pool_colors.darkpurple ],
-    "0x20744acca6966c0f45a80aa7baf778f4517351a4" : [ "PoolOfD32th",       "http://0xbtc.poolofd32th.club",  pool_colors.darkred ],
+    "0x8dcee1c6302232c4cc5ce7b5ee8be16c1f9fd961" : [ "MineCLM",         "http://mineCLM.eu",            pool_colors.darkpurple ],
+    "0x20744acca6966c0f45a80aa7baf778f4517351a4" : [ "PoolOfD32th",       "http://CLM.poolofd32th.club",  pool_colors.darkred ],
     "0xd4ddfd51956c19f624e948abc8619e56e5dc3958" : [ "0xMiningPool",      "http://0xminingpool.com/",       pool_colors.teal ],
-    "0x88c2952c9e9c56e8402d1b6ce6ab986747336b30" : [ "0xbtc.wolfpool.io", "http://wolfpool.io/",            pool_colors.red ],
+    "0x88c2952c9e9c56e8402d1b6ce6ab986747336b30" : [ "CLM.wolfpool.io", "http://wolfpool.io/",            pool_colors.red ],
     "0x540d752a388b4fc1c9deeb1cd3716a2b7875d8a6" : [ "tosti.ro",          "http://tosti.ro/",               pool_colors.slate ],
-    "0xbbdf0402e51d12950bd8bbd50a25ed1aba5615ef" : [ "ExtremeHash",       "http://0xbtc.extremehash.io/",   pool_colors.brightred ],
+    "0xbbdf0402e51d12950bd8bbd50a25ed1aba5615ef" : [ "ExtremeHash",       "http://CLM.extremehash.io/",   pool_colors.brightred ],
     "0x7d28994733e6dbb93fc285c01d1639e3203b54e4" : [ "Wutime.com",        "http://wutime.com/",             pool_colors.royal ],
     "0x02e03db268488716c161721663501014fa031250" : [ "xb.veo.network",    "https://xb.veo.network:2096/",   pool_colors.pink ],
     "0xbf39de3c506f1e809b4e10e00dd22eb331abf334" : [ "xb.veo.network",    "https://xb.veo.network:2096/",   pool_colors.pink ],
-    "0x5404bd6b428bb8e326880849a61f0e7443ef5381" : [ "666pool",           "http://0xbtc.666pool.cn/",       pool_colors.grey ],
+    "0x5404bd6b428bb8e326880849a61f0e7443ef5381" : [ "666pool",           "http://CLM.666pool.cn/",       pool_colors.grey ],
     "0x6917035f1deecc51fa475be4a2dc5528b92fd6b0" : [ "PiZzA pool",        "http://gpu.PiZzA",               pool_colors.yellow ],
     "0x693d59285fefbd6e7be1b87be959eade2a4bf099" : [ "PiZzA pool",        "http://gpu.PiZzA",               pool_colors.yellow ],
     "0x697f698dd492d71734bcaec77fd5065fa7a95a63" : [ "PiZzA pool",        "http://gpu.PiZzA",               pool_colors.yellow ],
@@ -86,16 +91,13 @@ var known_miners = {
 }
 
 
-
-
 /* TODO: figure out why it doesn't work w metamask */
 var eth = new Eth(new Eth.HttpProvider("https://mainnet.infura.io/v3/9e948e5f594248d1b846ff3df9c7d3dc"));
-// if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
-//   var eth = new Eth(window.web3.currentProvider);
-// } else {
-//   var eth = new Eth(new Eth.HttpProvider("https://mainnet.infura.io/MnFOXCPE2oOhWpOCyEBT"));
-//   log("warning: no web3 provider found, using infura.io as backup provider")
-// }
+const token = eth.contract(tokenABI).at(_TOKEN_CONTRACT);
+const _master = eth.contract(tokenABI).at(_MASTER_CONTRACT);
+const _miner = eth.contract(tokenABI).at(_MINER_CONTRACT);
+
+
 
 var el = function(id){ return document.querySelector(id); };
 //console.log(Caelum);
@@ -146,7 +148,7 @@ function getProgress() {
     });
 }
 
-const token = eth.contract(tokenABI).at(_CONTRACT_ADDRESS);
+
 
 /**
 * @dev:
@@ -252,20 +254,20 @@ function calculateNewMiningDifficulty(current_difficulty,
     /* move fetching/storing stats into a class, even just to wrap it */
     stats = [
         /*Description                     promise which retuns, or null         units         multiplier  null: filled in later*/
-        ['Mining Difficulty',             token.getMiningDifficulty,            "",           1,          null     ], /* mining difficulty */
+        ['Mining Difficulty',             _miner.getMiningDifficulty,            "",           1,          null     ], /* mining difficulty */
         ['Estimated Hashrate',            null,                                 "Mh/s",       1,          null     ], /* mining difficulty */
         ['Rewards Until Readjustment',    null,                                 "",           1,          null     ], /* mining difficulty */
         ['Current Average Reward Time',   null,                                 "minutes",    1,          null     ], /* mining difficulty */
-        ['Last Difficulty Start Block',   token.latestDifficultyPeriodStarted,  "",           1,          null     ], /* mining difficulty */
-        ['Tokens Minted',                 token.tokensMinted,                   "CLM",      0.00000001, null     ], /* supply */
-        ['Max Supply for Current Era',    token.maxSupplyForEra,                "CLM",      0.00000001, null     ], /* mining */
+        ['Last Difficulty Start Block',   _miner.latestDifficultyPeriodStarted,  "",           1,          null     ], /* mining difficulty */
+        ['Tokens Minted',                 _miner.tokensMinted,                   "CLM",      0.00000001, null     ], /* supply */
+        ['Max Supply for Current Era',    _miner.maxSupplyForEra,                "CLM",      0.00000001, null     ], /* mining */
         ['Supply Remaining in Era',       null,                                 "CLM",      0.00000001, null     ], /* mining */
         //['Last Eth Reward Block',         token.lastRewardEthBlockNumber,       "",           1,          null     ], /* mining */
         ['Last Eth Block',                eth.blockNumber,                      "",           1,          null     ], /* mining */
-        ['Current Reward Era',            token.rewardEra,                      "/ 39",       1,          null     ], /* mining */
-        ['Current Mining Reward',         token.getMiningReward,                "CLM",      0.00000001, null     ], /* mining */
-        ['Epoch Count',                   token.epochCount,                     "",           1,          null     ], /* mining */
-        ['Total Supply',                  token.totalSupply,                    "CLM",      0.00000001, null     ], /* supply */
+        ['Current Reward Era',            _miner.rewardEra,                      "/ 39",       1,          null     ], /* mining */
+        ['Current Mining Reward',         _miner.getMiningRewardForPool,                "CLM",      0.00000001, null     ], /* mining */
+        ['Epoch Count',                   _miner.epochCount,                     "",           1,          null     ], /* mining */
+        ['Total Supply',                  _miner.totalSupply,                    "CLM",      0.00000001, null     ], /* supply */
         ['',                              null,                                 "",           1,          null     ], /* */
         ['Token Holders',                 null,                                 "holders",    1,          null     ], /* usage */
         ['Token Transfers',               null,                                 "transfers",  1,          null     ], /* usage */
@@ -447,7 +449,7 @@ function calculateNewMiningDifficulty(current_difficulty,
                 }
                 supply_remaining_in_era = max_supply_for_era - current_supply; /* TODO: probably need to round to current mining reward */
                 rewards_blocks_remaining_in_era = supply_remaining_in_era / current_reward;
-                el_safe('#SupplyRemaininginEra').innerHTML = "<b>" + supply_remaining_in_era.toLocaleString() + "</b> 0xBTC <span style='font-size:0.8em;'>(" + rewards_blocks_remaining_in_era + " blocks)</span>";
+                el_safe('#SupplyRemaininginEra').innerHTML = "<b>" + supply_remaining_in_era.toLocaleString() + "</b> CLM <span style='font-size:0.8em;'>(" + rewards_blocks_remaining_in_era + " blocks)</span>";
 
                 /* time until next epoch ('halvening') */
                 el_safe('#CurrentRewardEra').innerHTML += " <span style='font-size:0.8em;'>(next era: ~" + secondsToReadableTime(rewards_blocks_remaining_in_era * _IDEAL_BLOCK_TIME_SECONDS) + ")</div>";
@@ -810,7 +812,7 @@ function calculateNewMiningDifficulty(current_difficulty,
 
                     }
 
-                    /* get last hours_into_past worth of mined 0xbtc blocks, save to a CSV file */
+                    /* get last hours_into_past worth of mined CLM blocks, save to a CSV file */
                     function getMinerInfoCSV(eth, stats, hours_into_past){
                         log('getMinerInfoCSV...')
                         var last_reward_eth_block = getValueFromStats('Last Eth Reward Block', stats)
@@ -889,7 +891,7 @@ function calculateNewMiningDifficulty(current_difficulty,
                             log('done');
 
                             // Start file download.
-                            downloadTextAsFile("0xbtc-blocks-" + date_now.toLocaleTimeString() + ".csv",
+                            downloadTextAsFile("CLM-blocks-" + date_now.toLocaleTimeString() + ".csv",
                             csv_text);
 
                             goToURLAnchor();
