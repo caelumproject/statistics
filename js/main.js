@@ -661,7 +661,7 @@ function calculateNewMiningDifficulty(current_difficulty,
                     eth.getLogs({
                         fromBlock: start_log_search_at,
                         toBlock: last_reward_eth_block,
-                        address: _CONTRACT_ADDRESS,
+                        address: _MINER_CONTRACT,
                         topics: [_MINT_TOPIC, null],
                     })
                     .then((result) => {
@@ -833,7 +833,7 @@ function calculateNewMiningDifficulty(current_difficulty,
                         eth.getLogs({
                             fromBlock: last_reward_eth_block - num_eth_blocks_to_search,
                             toBlock: last_reward_eth_block,
-                            address: _CONTRACT_ADDRESS,
+                            address: _MINER_CONTRACT,
                             topics: [_MINT_TOPIC, null],
                         })
                         .then((result) => {
