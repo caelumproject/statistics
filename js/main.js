@@ -61,7 +61,7 @@ var pool_colors = {
 
 
 var known_miners = {
-    "0xf3243babf74ead828ac656877137df705868fd66" : [ "Token Mining Pool", "http://TokenMiningPool.com",     pool_colors.orange ],
+    "0xf6ca6eb7d4a406f9076c9122d78d194c0e0c1d6b" : [ "@MrStruggle solo", "",     pool_colors.orange ],
     /**
     * @title:
     */
