@@ -86,16 +86,12 @@ var known_miners = {
 }
 
 
-
-
 /* TODO: figure out why it doesn't work w metamask */
 var eth = new Eth(new Eth.HttpProvider("https://mainnet.infura.io/v3/9e948e5f594248d1b846ff3df9c7d3dc"));
-// if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
-//   var eth = new Eth(window.web3.currentProvider);
-// } else {
-//   var eth = new Eth(new Eth.HttpProvider("https://mainnet.infura.io/MnFOXCPE2oOhWpOCyEBT"));
-//   log("warning: no web3 provider found, using infura.io as backup provider")
-// }
+const token = eth.contract(tokenABI).at(_CONTRACT_ADDRESS);
+
+
+
 
 var el = function(id){ return document.querySelector(id); };
 //console.log(Caelum);
@@ -117,13 +113,40 @@ inner((err, res) => {
 * @param  undefined :
 */
 function refreshData() {
+    getSupply();
     getProgress();
 }
 
 var dataRefresh = setInterval(function() {
+    getSupply();
     getProgress();
 }, 30000);
 
+function getSupply() {
+    var supplyJSON = "https://ethplorer.io/service/service.php?data=0xc71a7ecd96fef6e34a5c296bee9533f1deb0e3c1&page=tab=tab-holders%26pageSize=100000";
+    var lockedAddress = "https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xc71a7ecd96fef6e34a5c296bee9533f1deb0e3c1&address=0xc71a7ecd96fef6e34a5c296bee9533f1deb0e3c1&tag=latest&apikey=WSXFQJCUUXQR6HY1PQB9KJQCQ3RIYPUVDQ"
+    var inter;
+
+
+    $.getJSON(supplyJSON, function(data) {
+        var total = 0;
+            for (var i = 0; i < data.holders.length; i++) {
+              total += data.holders[i].balance;
+              //console.log(data.holders[i].balance)
+            }
+
+        _AVAILABLE_SUPPLY = total / 1e8;
+        $("#SUP").text(Number(_AVAILABLE_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+        inter = _AVAILABLE_SUPPLY;
+
+        $.getJSON(lockedAddress, function(data) {
+            _LOCKED_SUPPLY = data.result / 1e8;
+            $("#LOCK").text(Number(_LOCKED_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+            $("#CIRC").text(Number(_AVAILABLE_SUPPLY - _LOCKED_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+        });
+    });
+
+}
 
 /**
 * @dev:
@@ -146,7 +169,7 @@ function getProgress() {
     });
 }
 
-const token = eth.contract(tokenABI).at(_CONTRACT_ADDRESS);
+
 
 /**
 * @dev:
@@ -989,6 +1012,7 @@ function calculateNewMiningDifficulty(current_difficulty,
                     }
 
                     function loadAllStats() {
+                        getSupply();
                         getProgress();
                         updateStatsTable(stats);
                     }
