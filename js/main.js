@@ -132,19 +132,18 @@ function getSupply() {
 
     $.getJSON(supplyJSON, function(data) {
         var total = 0;
-            for (var i = 0; i < data.holders.length; i++) {
-              total += data.holders[i].balance;
-              //console.log(data.holders[i].balance)
-            }
+        for (var i = 0; i < data.holders.length; i++) {
+          total += data.holders[i].balance;
+        }
 
         _AVAILABLE_SUPPLY = total / 1e8;
-        $("#SUP").text(Number(_AVAILABLE_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+        $("#TotalSupplyField").text(Number(_AVAILABLE_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
         inter = _AVAILABLE_SUPPLY;
 
         $.getJSON(lockedAddress, function(data) {
             _LOCKED_SUPPLY = data.result / 1e8;
-            $("#LOCK").text(Number(_LOCKED_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
-            $("#CIRC").text(Number(_AVAILABLE_SUPPLY - _LOCKED_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+            $("#LockedSupplyField").text(Number(_LOCKED_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
+            $("#CirculatingSupplyField").text(Number(_AVAILABLE_SUPPLY - _LOCKED_SUPPLY).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'));
         });
     });
 
